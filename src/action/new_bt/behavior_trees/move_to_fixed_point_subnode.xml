@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+  move_to_fixed_point_subnode.xml
+  ============================================================
+  功能: 可复用的"移动到固定点"行为树子节点 (SubTree Node)。
+  可以像一个独立节点一样，被其他行为树直接 <include> 并调用。
+
+  调用示例:
+    <include path="move_to_fixed_point_subnode.xml"/>
+    ...
+    <SubTree ID="MoveToFixedPointSubTree"
+             target_x="3.8"
+             target_y="-1.8"
+             target_yaw="0.0"
+             frame_id="map"/>
+  ============================================================
+-->
+<root BTCPP_format="4">
+
+  <BehaviorTree ID="MoveToFixedPointSubTree">
+    <Sequence name="SubMoveToFixedPoint">
+      <MoveToFixedPoint x="{target_x}"
+                        y="{target_y}"
+                        yaw="{target_yaw}"
+                        frame_id="{frame_id}"
+                        action_name="/AT_R2/navigate_to_pose"
+                        goal="{sub_goal}"/>
+    </Sequence>
+  </BehaviorTree>
+
+</root>

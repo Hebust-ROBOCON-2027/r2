@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  multi_points_patrol.xml
+  ============================================================
+  功能: 顺序导航巡航多个固定点的行为树示例。
+  底盘将按顺序依次移动到：固定点 1 -> 固定点 2 -> 固定点 3。
+  ============================================================
+-->
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+
+  <include path="move_to_fixed_point_subnode.xml"/>
+
+  <BehaviorTree ID="MainTree">
+    <Sequence name="MultiPointsPatrolSeq">
+
+      <!-- ====== 目标固定点 1 ====== -->
+      <SubTree ID="MoveToFixedPointSubTree"
+               target_x="1.50"
+               target_y="1.00"
+               target_yaw="0.00"
+               frame_id="map"/>
+
+      <!-- ====== 目标固定点 2 ====== -->
+      <SubTree ID="MoveToFixedPointSubTree"
+               target_x="3.00"
+               target_y="1.00"
+               target_yaw="1.57"
+               frame_id="map"/>
+
+      <!-- ====== 目标固定点 3 ====== -->
+      <SubTree ID="MoveToFixedPointSubTree"
+               target_x="1.00"
+               target_y="0.00"
+               target_yaw="3.14"
+               frame_id="map"/>
+
+    </Sequence>
+  </BehaviorTree>
+
+</root>

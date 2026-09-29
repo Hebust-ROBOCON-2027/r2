@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+  nav_to_fixed_point.xml
+  ============================================================
+  功能: 纯固定点导航移动行为树。
+  机器人从当前位置自主规划路径并移动到指定的固定坐标点 (x, y, yaw)。
+
+  节点说明:
+    - MoveToFixedPoint / PublishGoal:
+        * x: 目标点在地图系下的 X 坐标 (米)
+        * y: 目标点在地图系下的 Y 坐标 (米)
+        * yaw: 目标点朝向偏航角 (弧度, 0=正X, 1.57=正Y, 3.14=反X, -1.57=反Y)
+        * frame_id: 坐标系，默认为 "map"
+        * action_name: 导航服务端，默认 "/AT_R2/navigate_to_pose"
+  ============================================================
+-->
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+
+  <BehaviorTree ID="MainTree">
+    <Sequence name="NavToFixedPointSequence">
+
+      <!-- 核心动作：导航移动到指定固定点坐标 -->
+      <MoveToFixedPoint x="2.00"
+                        y="1.50"
+                        yaw="0.00"
+                        frame_id="map"
+                        action_name="/AT_R2/navigate_to_pose"
+                        goal="{target_goal}"/>
+
+    </Sequence>
+  </BehaviorTree>
+
+</root>
